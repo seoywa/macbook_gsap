@@ -15,7 +15,6 @@ const App = () => {
       <NavBar />
       <Hero />
       <ProductViewer />
-      <Performance />
     </main>
   )
 }
