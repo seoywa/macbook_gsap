@@ -4,7 +4,7 @@ import Hero from './components/Hero'
 import ProductViewer from './components/ProductViewer'
 import { ScrollTrigger , SplitText} from 'gsap/all'
 import gsap from 'gsap'
-import Performance from './components/Performance'
+import Showcase from './components/three/Showcase'
 
 gsap.registerPlugin(ScrollTrigger);
 //this line makes sure the plugin is globally accessable 
@@ -15,6 +15,7 @@ const App = () => {
       <NavBar />
       <Hero />
       <ProductViewer />
+      <Showcase />
     </main>
   )
 }
