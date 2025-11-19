@@ -12,7 +12,7 @@ import gsap from "gsap";
 
 const ModelScroll = () => {
   const groupRef = useRef(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1024)" });
 
   const { setTexture } = useMacbookStore();
 
@@ -45,14 +45,25 @@ const ModelScroll = () => {
 
     //Sync the feature content
 
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#f-canvas",
-        start: "top center",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
+    const timeline = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#f-canvas",
+          start: "top center",
+          end: "bottom top",
+          scrub: 1,
+        },
+      })
+      .to("#f-canvas", {
+        scrollTrigger: {
+          trigger: "#features", // The section wrapping the canvas
+          start: "center bottom", // When the bottom of the section hits bottom of viewport
+          end: "bottom+=200 bottom", // Extend the fade duration
+          scrub: true,
+        },
+        opacity: 0,
+        ease: "power1.out",
+      });
 
     //3D SPIN
     if (groupRef.current) {
@@ -108,7 +119,7 @@ const Features = () => {
 
       <div className="absolute inset-0.5">
         {features.map((feature, index) => (
-          <div className={clsx("box", `box${index + 1}`, feature.styles)}>
+          <div className={clsx("box", `box${index + 1}`, feature.styles)} key={feature.id}>
             <img src={feature.icon} alt={feature.highlight} />
             <p>
               <span className="text-white">{feature.highlight}</span>
