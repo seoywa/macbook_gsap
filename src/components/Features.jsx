@@ -12,7 +12,7 @@ import gsap from "gsap";
 
 const ModelScroll = () => {
   const groupRef = useRef(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
 
   const { setTexture } = useMacbookStore();
 
@@ -89,7 +89,7 @@ const ModelScroll = () => {
           </Html>
         }
       >
-        <MacbookModel scale={isMobile ? 0.05 : 0.08} position={[0, -1, 0]} />
+        <MacbookModel scale={isMobile ? 0.06 : 0.08} position={[0, -1, 0]} />
       </Suspense>
     </group>
   );
@@ -102,7 +102,7 @@ const Features = () => {
 
       <Canvas id="f-canvas" camera={{}}>
         <StudioLights />
-        <ambientLight />
+        <ambientLight intensity={0.5} />
         <ModelScroll />
       </Canvas>
 
