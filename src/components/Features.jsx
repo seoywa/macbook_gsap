@@ -12,7 +12,7 @@ import gsap from "gsap";
 
 const ModelScroll = () => {
   const groupRef = useRef(null);
-  const isMobile = useMediaQuery({ query: "(max-width: 1024)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1024px)" });
 
   const { setTexture } = useMacbookStore();
 
@@ -54,16 +54,7 @@ const ModelScroll = () => {
           scrub: 1,
         },
       })
-      .to("#f-canvas", {
-        scrollTrigger: {
-          trigger: "#features", // The section wrapping the canvas
-          start: "center bottom", // When the bottom of the section hits bottom of viewport
-          end: "bottom+=200 bottom", // Extend the fade duration
-          scrub: true,
-        },
-        opacity: 0,
-        ease: "power1.out",
-      });
+      
 
     //3D SPIN
     if (groupRef.current) {
@@ -74,7 +65,16 @@ const ModelScroll = () => {
     }
 
     //Content and texture syng
-    timeline
+    timeline.to("#f-canvas", {
+        scrollTrigger: {
+          trigger: "#features", // The section wrapping the canvas
+          start: "bottom bottom", // When the bottom of the section hits bottom of viewport
+          end: "bottom+=200 bottom", 
+          scrub: true,
+        },
+        opacity: 0,
+        ease: "power1.out",
+      })
       .call(() => setTexture("/videos/feature-1.mp4"))
       .to(".box1", { opacity: 1, y: 0, delay: 1 })
 
