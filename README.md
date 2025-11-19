@@ -1,3 +1,7 @@
+This is an Apple-style website with React, Three.js, GSAP and TailwindCSS. Create 3D product scenes, scroll animations, pinned sections, and responsive design.
+
+LIVE on Vercel: macbook-gsap-seven.vercel.app
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
